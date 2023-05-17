@@ -1,6 +1,6 @@
 1. 查询参数（Query Parameters）：查询参数是在URL中以`?`分隔的键值对。您可以使用`call.parameters`映射来访问查询参数。例如：
 
-````kotlin
+```kotlin
    get("/login") {
        val username = call.parameters["username"]
        val password = call.parameters["password"]
@@ -10,13 +10,13 @@
 
 要测试这个路由，您可以向服务器发送带有查询参数的GET请求。例如：
 
-````
+```
 http://localhost:8080/login?username=johndoe&password=mypassword
 ```
 
 2. 表单参数（Form Parameters）：表单参数是通过HTTP POST请求提交的表单数据。您可以使用`call.receiveParameters()`函数来访问表单参数。例如：
 
-````kotlin
+```kotlin
 post("/login") {
     val parameters = call.receiveParameters()
     val username = parameters["username"]
@@ -27,7 +27,7 @@ post("/login") {
 
 要测试这个路由，您可以使用HTTP客户端向服务器发送POST请求，并在请求正文中包含表单数据。例如，使用cURL命令行工具：
 
-````
+```
 curl -X POST -d 'username=johndoe&password=mypassword' http://localhost:8080/login
 ```
 

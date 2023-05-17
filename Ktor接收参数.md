@@ -8,24 +8,24 @@
    }
 ```
 
-   要测试这个路由，您可以向服务器发送带有查询参数的GET请求。例如：
+要测试这个路由，您可以向服务器发送带有查询参数的GET请求。例如：
 
-   ````
-   http://localhost:8080/login?username=johndoe&password=mypassword
-   ```
+````
+http://localhost:8080/login?username=johndoe&password=mypassword
+```
 
 2. 表单参数（Form Parameters）：表单参数是通过HTTP POST请求提交的表单数据。您可以使用`call.receiveParameters()`函数来访问表单参数。例如：
 
 ````kotlin
-   post("/login") {
-       val parameters = call.receiveParameters()
-       val username = parameters["username"]
-       val password = parameters["password"]
-       call.respondText("用户名：$username, 密码：$password")
-   }
+post("/login") {
+    val parameters = call.receiveParameters()
+    val username = parameters["username"]
+    val password = parameters["password"]
+    call.respondText("用户名：$username, 密码：$password")
+}
 ```
 
-   要测试这个路由，您可以使用HTTP客户端向服务器发送POST请求，并在请求正文中包含表单数据。例如，使用cURL命令行工具：
+要测试这个路由，您可以使用HTTP客户端向服务器发送POST请求，并在请求正文中包含表单数据。例如，使用cURL命令行工具：
 
 ````
 curl -X POST -d 'username=johndoe&password=mypassword' http://localhost:8080/login
